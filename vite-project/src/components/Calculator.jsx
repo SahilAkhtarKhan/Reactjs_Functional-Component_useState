@@ -1,11 +1,11 @@
 import {useState} from "react"
 
-function FormFunctionalComponent(){
+function FormCalculator(){
     const [fName, setfName] = useState("sahil")
     const [lName, setlName] = useState("khan")
     const [numOne, setNumOne]  =useState(0)
     const [numTwo, setNumTwo]  =useState(0)
-    const [btn, setBtn] = useState(0)
+    const [result, setBtn] = useState(0)
 
 function addition(){
     setBtn((+numOne)+(+numTwo))
@@ -28,19 +28,19 @@ function division(){
         <input type="text" name="fName" value={fName} onChange={(e)=>{setfName(e.target.value)}}/>
         <label>Lastname -</label>
         <input type="text" name="lName" value={lName} onChange={(e)=>{setlName(e.target.value)}}/><br/><br/>
-        <span>My name is {fName} {lName}</span> <br/><br/>
         <p>Number 1</p>
         <input type="number" name="" value={numOne} onChange={(e)=>{setNumOne(e.target.value)}}/><br/><br/>
         <p>Number 2</p>
         <input type="number" name="" value={numTwo} onChange={(e)=>{setNumTwo(e.target.value)}}/><br/><br/>
-        <span>{btn}</span> <br/>
+        <span>{result}</span> <br/>
         <button onClick={addition}>Add</button>
         <button onClick={subtraction}>Subtract</button>
         <button onClick={multiplication}>Multiply</button> 
-        <button onClick={division}>Divide</button>
-        <p>Total is - {btn}</p>
+        <button onClick={division}>Divide</button> <br/><br/>
+        <span>Hello {fName} {lName}, Your result is - {result}</span> 
+  
         </>
     )
 }
 
-export default FormFunctionalComponent;
+export default FormCalculator;
