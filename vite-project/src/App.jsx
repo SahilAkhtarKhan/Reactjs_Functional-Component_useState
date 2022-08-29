@@ -1,43 +1,62 @@
-import "./App.css";
-import { Button } from "reactstrap";
-import { Card } from "./ApiTask";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import About from "./ReactRouter/About";
+import Contact from "./ReactRouter/Contact";
+import Home from "./ReactRouter/Home";
+import Navbar from "./ReactRouter/Navbar";
+import UserDetails from "./ReactRouter/userDetails";
+import Users from "./ReactRouter/users";
 
-function AddToFav(props) {
-  const { data } = props;
-  return data.map((item) => {
-    return (
-      <div className="container">
-        <div>
-          <h6> Name : {item.name}</h6>
-          <p>
-            <b>Website : </b>
-            {item.website}
-            <br />
-          </p>
-        </div>
-        <div>
-          <Button
-            style={{ backgroundColor: "darkblue", margin: "10px" }}
-            onClick={() => {
-              favCards(index, data);
-            }}
-          >
-            Remove fav
-          </Button>
-          <br />
-        </div>
-      </div>
-    );
-  });
-}
+// import { useState } from "react";
+// import { createContext } from "react";
+// import Comp01 from "./React Task/DarkThemeContextAPI/Comp01";
 
+// const TextContext = createContext();
+// const ThemeContext = createContext();
 function App() {
+  // const [text, setText] = useState("");
+  // const [theme, setTheme] = useState(true);
+  // return (
+  //   <>
+  //     <input
+  //       type="text"
+  //       value={text}
+  //       onChange={(e) => {
+  //         setText(e.target.value);
+  //       }}
+  //     />
+  //     <br />
+  //     <br />
+  //     <TextContext.Provider value={text}>
+  //       <ThemeContext.Provider value={theme}>
+  //         <Comp01 />
+  //       </ThemeContext.Provider>
+  //     </TextContext.Provider>
+
+  //     <br />
+  //     <button
+  //       onClick={() => {
+  //         setTheme(!theme);
+  //       }}
+  //     >
+  //       Change Theme
+  //     </button>
+  // </>
+  // );
   return (
-    <div className="card">
-      <h1>API List</h1>
-      <Card />
-    </div>
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/*" element={<Contact />} />
+          <Route path="/user" element={<Users />} />
+          <Route path="/user/:userid" element={<UserDetails />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
-
-export { App, AddToFav };
+export default App;
+// export { TextContext, ThemeContext };
